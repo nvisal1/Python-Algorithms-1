@@ -1,25 +1,19 @@
-def method1(array) {
-    for 
-}
+import re
 
-def method2(array) {
+# def method1(array):
 
-}
+# def method2(array):
 
-def method3(array) {
+# def method3(array):
 
-}
-
-def readInput(filename):
-    with open(filename) as f:
-        return [re.findall('[A-Z]', line.upper()) for line in f]
+def readInputFile(filename):
+    with open(filename) as textFile:
+        lines = [line.split() for line in textFile]
+    return lines
 
 def main(inputFilenames):
-    puzzleGrid = readPuzzleGrid(puzzleFilename)
-    wordList = readWordList(wordListFilename)
-    searchResults = iterateWordList(puzzleGrid, wordList)
-    for result in searchResults:
-        print(result)
+    for index, inputFilename in enumerate(inputFilenames):
+        result = readInputFile(inputFilename)
 
 if __name__ == '__main__':
-    main('PuzzleInput.txt', 'WordList.txt')
+    main(['Majex1.txt', 'Majex2.txt', 'Majex3.txt', 'Majex4.txt'])
