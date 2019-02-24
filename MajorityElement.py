@@ -21,9 +21,29 @@ def method1(array):
                 return array[i][j]
     return None
 
-# def method2(array):
-
-# def method3(array):
+def method2(array):
+    if len(array) == 1:
+        return array[0]
+    halfLength = len(array)//2
+    firsthalf = array[:len(array)//2]
+    secondhalf = array[len(array)//2:]
+    firstResult = method2(firsthalf)
+    secondResult = method2(secondhalf)
+    if firstResult == seecondResult:
+        return firstResult
+    
+def method3(array):
+    majIndex = 0
+    count = 0
+    for i in range(len(array)):
+        if array[majIndex] == array[i]:
+            count += 1
+        else: 
+            count -= 1
+        if count == 0:
+            majIndex = i
+            count = 1
+    return array[majIndex]
 
 def readInputFile(filename):
     with open(filename) as textFile:
@@ -33,7 +53,7 @@ def readInputFile(filename):
 def main(inputFilenames):
     for index, inputFilename in enumerate(inputFilenames):
         result = readInputFile(inputFilename)
-        method1Result = method1(result)
+        method1Result = method3(result)
         print(method1Result)
 
 if __name__ == '__main__':
