@@ -19,6 +19,7 @@ def method1(array):
             dictionary[array[i][j]] = dictionary.get(array[i][j]) + 1
             if dictionary[array[i][j]] >= halfLength:
                 return array[i][j]
+    return None
 
 # def method2(array):
 
