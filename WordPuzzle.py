@@ -2,6 +2,7 @@ from collections import namedtuple
 from itertools import product
 import re
 import sys
+import timeit
 
 Direction = namedtuple('Direction', 'di dj name')
 
@@ -53,11 +54,14 @@ def iterateWordList(puzzleGrid, wordList):
     return resultMessages
 
 def main(puzzleFilename, wordListFilename):
+    start = timeit.default_timer()
     puzzleGrid = readPuzzleGrid(puzzleFilename)
     wordList = readWordList(wordListFilename)
     searchResults = iterateWordList(puzzleGrid, wordList)
     for result in searchResults:
         print(result)
+    stop = timeit.default_timer()
+    print('Time: ', stop - start)  
 
 if __name__ == '__main__':
     main('PuzzleInput.txt', 'WordList.txt')

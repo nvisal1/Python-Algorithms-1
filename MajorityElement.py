@@ -18,19 +18,29 @@ def method1(array):
         for j in range(len(array[i])):
             dictionary[array[i][j]] = dictionary.get(array[i][j]) + 1
             if dictionary[array[i][j]] >= halfLength:
-                return array[i][j]
+                return array[i][j], dictionary.get(array[i][j])
     return None
 
 def method2(array):
     if len(array) == 1:
         return array[0]
     halfLength = len(array)//2
-    firsthalf = array[:len(array)//2]
-    secondhalf = array[len(array)//2:]
-    firstResult = method2(firsthalf)
-    secondResult = method2(secondhalf)
-    if firstResult == seecondResult:
+
+    firstResult = method2(array[:halfLength])
+    secondResult = method2(array[halfLength:])
+
+    if firstResult == secondResult:
         return firstResult
+
+    lcount = array.count(firstResult)
+    rcount = array.count(secondResult)
+
+    if lcount > halfLength:
+        return firstResult
+    elif rcount > halfLength:
+        return secondResult
+    else: 
+        return None
     
 def method3(array):
     majIndex = 0
@@ -53,8 +63,14 @@ def readInputFile(filename):
 def main(inputFilenames):
     for index, inputFilename in enumerate(inputFilenames):
         result = readInputFile(inputFilename)
-        method1Result = method3(result)
+        method1Result = method1(result)
         print(method1Result)
+        print("====================")
+        method2Result = method2(result)
+        print(method2Result)
+        print("====================")
+        method3Result = method3(result)
+        print(method3Result)
 
 if __name__ == '__main__':
     main(['Majex1.txt', 'Majex2.txt', 'Majex3.txt', 'Majex4.txt'])
