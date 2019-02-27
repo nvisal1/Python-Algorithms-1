@@ -12,6 +12,10 @@ def decimalToBinary(decimal):
     else: 
         return decimalToBinary(decimal//2) + str(decimal%2)
 
+
+"""
+Orchestrate the program and print result
+"""
 number = input('Enter a decimal')
 result = decimalToBinary(number)
 print('Binary representation: ' + result)
