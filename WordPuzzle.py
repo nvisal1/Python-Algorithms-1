@@ -50,11 +50,11 @@ def readWordList(filename):
 :returns: word || None
 :rtype: str
 """
-def extract(puzzleGrid, i, j, dir):
-    if ( 0 <= i + (length - 1) * dir.di < len(puzzleGrid) and
-         0 <= j + (length - 1) * dir.dj < len(puzzleGrid[i]) ):
+def extract(puzzleGrid, i, j, dir, wordLength):
+    if ( 0 <= i + (wordLength - 1) * dir.di < len(puzzleGrid) and
+         0 <= j + (wordLength - 1) * dir.dj < len(puzzleGrid[i]) ):
         return ''.join(
-            puzzleGrid[i + n * dir.di][j + n * dir.dj] for n in range(length)
+            puzzleGrid[i + n * dir.di][j + n * dir.dj] for n in range(wordLength)
         )
     return None
 
@@ -107,6 +107,8 @@ def main(puzzleFilename, wordListFilename):
     for result in searchResults:
         print(result)
     stop = timeit.default_timer()
+    
+    # PRINT RUNTIME
     print('Time: ', stop - start)  
 
 if __name__ == '__main__':
