@@ -18,7 +18,7 @@ def method1(array):
         for j in range(len(array[i])):
             dictionary[array[i][j]] = dictionary.get(array[i][j]) + 1
             if dictionary[array[i][j]] >= halfLength:
-                return array[i][j], dictionary.get(array[i][j])
+                return array[i][j]
     return None
 
 def method2(array):
@@ -35,14 +35,15 @@ def method2(array):
     lcount = array.count(firstResult)
     rcount = array.count(secondResult)
 
-    if lcount > halfLength:
+    if lcount >= halfLength:
         return firstResult
-    elif rcount > halfLength:
+    elif rcount >= halfLength:
         return secondResult
     else: 
-        return None
+        return "none"
     
 def method3(array):
+    # Method 3 step 1
     majIndex = 0
     count = 0
     for i in range(len(array)):
@@ -62,15 +63,29 @@ def readInputFile(filename):
 
 def main(inputFilenames):
     for index, inputFilename in enumerate(inputFilenames):
-        result = readInputFile(inputFilename)
-        method1Result = method1(result)
-        print(method1Result)
+        array2D = readInputFile(inputFilename)
+        arrayFlat = sum(array2D, [])
+        method1Result = method1(array2D)
+        print("********************")
+        print('Method 1')
+        print('Filename: ' + inputFilename)
+        print('Result: ' + method1Result)
         print("====================")
-        method2Result = method2(result)
-        print(method2Result)
+        method2Result = method2(arrayFlat)
+        print('Method 2')
+        print('Filename: ' + inputFilename)
+        print('Result: ' + method2Result)
         print("====================")
-        method3Result = method3(result)
-        print(method3Result)
+        method3Result = method3(arrayFlat)
+        print('Method 3')
+        print('Filename: ' + inputFilename)
+        # Method 3 step 2
+        if (method3Result == method2Result):
+            print('Result: ' + method3Result)
+        else: 
+            print("Found " + method3Result + ", but it does not match")
+        print("********************")
+        print('')
 
 if __name__ == '__main__':
     main(['Majex1.txt', 'Majex2.txt', 'Majex3.txt', 'Majex4.txt'])
