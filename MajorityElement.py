@@ -7,7 +7,8 @@ import re
 :rtype: int
 """
 def method1(array):
-    halfLength = len(array)//2
+    arrayFlat = sum(array, [])
+    halfLength = len(arrayFlat)//2
     dictionary = {
         '1': 0,
         '2': 0,
@@ -19,11 +20,10 @@ def method1(array):
         '8': 0,
         '9': 0,
     }
-
     for i in range(len(array)):
         for j in range(len(array[i])):
             dictionary[array[i][j]] = dictionary.get(array[i][j]) + 1
-            if dictionary[array[i][j]] >= halfLength:
+            if dictionary[array[i][j]] > halfLength:
                 return array[i][j]
     return None
 
@@ -47,9 +47,9 @@ def method2(array):
     lcount = array.count(firstResult)
     rcount = array.count(secondResult)
 
-    if lcount >= halfLength:
+    if lcount > halfLength:
         return firstResult
-    elif rcount >= halfLength:
+    elif rcount > halfLength:
         return secondResult
     else: 
         return None
@@ -62,6 +62,7 @@ def method2(array):
 """
 def method3(array):
     # Method 3 step 1
+    halfLength = len(array)//2
     majIndex = 0
     count = 0
     for i in range(len(array)):
@@ -72,7 +73,12 @@ def method3(array):
         if count == 0:
             majIndex = i
             count = 1
-    return array[majIndex]
+    # Method 3 step 2
+    check = array.count(array[majIndex])
+    if (check > halfLength):
+        return array[majIndex]
+    else:
+        return "Found " + array[majIndex] + ", but it does not match"
 
 """Converts contents of text file to a 2D array.
 :param filename: name of the file to read
@@ -97,21 +103,20 @@ def main(inputFilenames):
         print("********************")
         print('Method 1')
         print('Filename: ' + inputFilename)
-        print('Result: ' + method1Result)
+        print('Result: ')
+        print(method1Result)
         print("====================")
         method2Result = method2(arrayFlat)
         print('Method 2')
         print('Filename: ' + inputFilename)
-        print('Result: ' + method2Result)
+        print('Result: ')
+        print(method2Result)
         print("====================")
         method3Result = method3(arrayFlat)
         print('Method 3')
         print('Filename: ' + inputFilename)
-        # Method 3 step 2
-        if (method3Result == method2Result):
-            print('Result: ' + method3Result)
-        else: 
-            print("Found " + method3Result + ", but it does not match")
+        print('Result: ')
+        print(method3Result)
         print("********************")
         print('')
 
