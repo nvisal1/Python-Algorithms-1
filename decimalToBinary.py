@@ -1,3 +1,9 @@
+"""
+Name: Nicholas Visalli 
+Assignment number: 1
+Purpose: Convert decimal to binary
+"""
+
 """Recursive function to convret a given decimal to binary.
 :param decimal: decimal to convert to binary
 :type decimal: str

@@ -1,3 +1,9 @@
+"""
+Name: Nicholas Visalli 
+Assignment number: 1
+Purpose: Find words in a word puzzle
+"""
+
 from collections import namedtuple
 from itertools import product
 import re

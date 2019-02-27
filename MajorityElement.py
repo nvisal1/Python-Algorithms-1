@@ -1,3 +1,9 @@
+"""
+Name: Nicholas Visalli 
+Assignment number: 1
+Purpose: Design 3 algorithms to find the majority element of an array
+"""
+
 import re
 
 """(O(N^2)) algorithm to find majority element within an array.
