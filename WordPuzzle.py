@@ -2,6 +2,7 @@
 Name: Nicholas Visalli 
 Assignment number: 1
 Purpose: Find words in a word puzzle
+Research Credit: https://codereview.stackexchange.com/questions/156176/word-search-solver
 """
 
 from collections import namedtuple
