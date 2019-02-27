@@ -1,5 +1,11 @@
 import re
 
+"""(O(N^2)) algorithm to find majority element within an array.
+:param array: array of numbers between 1 - 9
+:type array: array
+:returns: None || majority element
+:rtype: int
+"""
 def method1(array):
     halfLength = len(array)//2
     dictionary = {
@@ -21,6 +27,12 @@ def method1(array):
                 return array[i][j]
     return None
 
+"""(O(NlogN)) algorithm to find majority element within an array.
+:param array: array of numbers between 1 - 9
+:type array: array
+:returns: None || majority element
+:rtype: int
+"""
 def method2(array):
     if len(array) == 1:
         return array[0]
@@ -40,8 +52,14 @@ def method2(array):
     elif rcount >= halfLength:
         return secondResult
     else: 
-        return "none"
+        return None
     
+"""(O(N)) algorithm to find majority element within an array.
+:param array: array of numbers between 1 - 9
+:type array: array
+:returns: None || majority element
+:rtype: int
+"""
 def method3(array):
     # Method 3 step 1
     majIndex = 0
@@ -56,11 +74,21 @@ def method3(array):
             count = 1
     return array[majIndex]
 
+"""Converts contents of text file to a 2D array.
+:param filename: name of the file to read
+:type filename: str
+:returns: lines
+:rtype: 2D array
+"""
 def readInputFile(filename):
     with open(filename) as textFile:
         lines = [line.split() for line in textFile]
     return lines
 
+"""Orchestrates the program.
+:param inputFilenames: array of all file names to read
+:type inputFillenames: array
+"""
 def main(inputFilenames):
     for index, inputFilename in enumerate(inputFilenames):
         array2D = readInputFile(inputFilename)
